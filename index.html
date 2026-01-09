@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Silvanum Ink – Studio Terminal</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1>Silvanum Ink</h1>
+        <div class="sub">Studio Terminal (RP)</div>
+      </div>
+      <div id="whoami" class="whoami"></div>
+    </header>
+
+    <main>
+      <!-- LOGIN -->
+      <section id="screen-login" class="card">
+        <h2>Login</h2>
+        <p class="muted">Kein OOC-Login nötig. RP-Name + PIN reicht.</p>
+
+        <label>RP-Name</label>
+        <select id="rpName"></select>
+
+        <label>PIN</label>
+        <input id="pin" type="password" inputmode="numeric" autocomplete="off" placeholder="z.B. 1234" />
+
+        <button id="btnLogin" class="primary">Einloggen</button>
+        <div id="loginMsg" class="msg"></div>
+      </section>
+
+      <!-- TERMINAL -->
+      <section id="screen-terminal" class="card hidden">
+        <h2>Terminal</h2>
+
+        <div class="grid">
+          <button id="goNewSession">➕ Neuen Termin</button>
+          <button id="goCustomers">👤 Kunden laden / bearbeiten</button>
+          <button id="goNewCustomer">🆕 Kunde anlegen</button>
+          <button id="goSessions">📅 Terminübersicht</button>
+        </div>
+
+        <hr />
+
+        <!-- NEW CUSTOMER -->
+        <div id="panel-new-customer" class="hidden">
+          <h3>Kunde anlegen</h3>
+          <div class="formrow">
+            <input id="custName" placeholder="Name" />
+            <input id="custPhone" placeholder="Telefon" />
+          </div>
+          <textarea id="custNotes" placeholder="Notizen"></textarea>
+          <button id="btnCreateCustomer" class="primary">Kunde speichern</button>
+          <div id="custMsg" class="msg"></div>
+        </div>
+
+        <!-- CUSTOMERS LIST -->
+        <div id="panel-customers" class="hidden">
+          <h3>Kunden</h3>
+          <input id="custSearch" placeholder="Suchen (Name/Telefon)..." />
+          <div id="customersList" class="list"></div>
+        </div>
+
+        <!-- NEW SESSION -->
+        <div id="panel-new-session" class="hidden">
+          <h3>Neuen Termin anlegen</h3>
+          <label>Kunde</label>
+          <select id="sessionCustomer"></select>
+
+          <div class="formrow">
+            <div class="col">
+              <label>Datum</label>
+              <input id="sessionDate" type="date" />
+            </div>
+            <div class="col">
+              <label>Start</label>
+              <input id="sessionStart" type="time" />
+            </div>
+            <div class="col">
+              <label>Ende</label>
+              <input id="sessionEnd" type="time" />
+            </div>
+          </div>
+
+          <label>Was wird gemacht?</label>
+          <input id="workDone" placeholder="z.B. Outline Unterarm" />
+
+          <div class="formrow">
+            <label class="inline">
+              <input id="paid" type="checkbox" />
+              Bezahlt
+            </label>
+            <input id="paymentMethod" placeholder="Zahlart (Cash/Karte/RP)" />
+          </div>
+
+          <textarea id="sessionNote" placeholder="Notiz"></textarea>
+          <button id="btnCreateSession" class="primary">Termin speichern</button>
+          <div id="sessionMsg" class="msg"></div>
+        </div>
+
+        <!-- SESSIONS LIST -->
+        <div id="panel-sessions" class="hidden">
+          <h3>Terminübersicht</h3>
+          <div id="sessionsList" class="list"></div>
+        </div>
+
+        <hr />
+        <button id="btnLogout" class="danger">Logout</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Supabase JS (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
