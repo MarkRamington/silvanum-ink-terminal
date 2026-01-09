@@ -6,8 +6,8 @@
 // - Create tables + RLS via supabase_schema.sql (provided earlier) :contentReference[oaicite:6]{index=6}
 //
 // IMPORTANT: Put your own values here:
-const SUPABASE_URL = "https://YOUR_PROJECT_REF.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_PUBLIC_KEY";
+const SUPABASE_URL = "https://kpqucitgonbpgnhjsrxl.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Hr9OVT2bltdLtunx6m5Ypw_SOuU2kO-";
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: { persistSession: true, autoRefreshToken: true },
@@ -440,3 +440,4 @@ el("btnCreateSession").addEventListener("click", async () => {
 });
 
 init();
+
